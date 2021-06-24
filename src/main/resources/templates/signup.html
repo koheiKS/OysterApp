@@ -1,10 +1,21 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
 <body>
+	名前は：<p th:text="${signUpTemplate.name}"></p>
+	メールアドレスは<p th:text="${signUpTemplate.email}"></p>
+	パスワードは<p th:text="${signUpTemplate.password}"></p>
+	パスワード確認は<p th:text="${signUpTemplate.confirmPassword}"></p>
 
+	<form method="post" action="/sign-up" data-th-object="${signUpTemplate}">
+		名前<input type="text" data-th-field="*{name}">
+		メールアドレス<input type="email" data-th-field="*{email}">
+		パスワード<input type="password" data-th-field="*{password}">
+		パスワード確認<input type="password" data-th-field="*{confirmPassword}">
+		<input type="submit" value="ログイン" >
+	</form>
 </body>
 </html>
